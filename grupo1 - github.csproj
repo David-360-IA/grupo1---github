@@ -46,11 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include=".Designer.cs" />
+    <Compile Include="cola circular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cola circular.Designer.cs">
+      <DependentUpon>cola circular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cola lineal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cola lineal.Designer.cs">
+      <DependentUpon>cola lineal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lista simple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lista simple.Designer.cs">
+      <DependentUpon>lista simple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="listas dobles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="listas dobles.Designer.cs">
+      <DependentUpon>listas dobles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pila.Designer.cs">
+      <DependentUpon>pila.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

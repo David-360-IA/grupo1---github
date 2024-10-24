@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace grupo1___github
 {
-    public partial class Form1 : Form
+    public partial class cola_circular : Form
     {
-        public Form1()
+        public cola_circular()
         {
             InitializeComponent();
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
