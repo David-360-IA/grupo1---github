@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace grupo1___github
 {
-    public partial class lista_simple : Form
+    public partial class Form2 : Form
     {
-        public lista_simple()
+        public Form2()
         {
             InitializeComponent();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
