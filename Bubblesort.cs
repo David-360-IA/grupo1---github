@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace grupo1___github
 {
-    public partial class Form3 : Form
+    public partial class Bubblesort : Form
     {
-        public Form3()
+        public Bubblesort()
         {
             InitializeComponent();
             InitializeDataGridView();
@@ -24,6 +24,7 @@ namespace grupo1___github
             textBox2.KeyPress += SoloLetras_KeyPress;
             textBox3.KeyPress += SoloLetras_KeyPress;
         }
+
         // Configurar el DataGridView
         private void InitializeDataGridView()
         {
@@ -72,21 +73,42 @@ namespace grupo1___github
         {
             this.Close();
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void Form2_Load(object sender, EventArgs e)
         {
 
-            if (dataGridView1.Rows.Count < 2)
-            {
-                MessageBox.Show("Debe haber al menos 2 datos en el DataGridView para ordenar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Ordenar de menor a mayor basado en la columna TextBox1
-            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
         }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows.Remove(row);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una fila para borrar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+     
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             // Validar que todos los campos estén llenos
@@ -108,7 +130,6 @@ namespace grupo1___github
                     MessageBox.Show("Ya existe un registro con el mismo valor en TextBox1.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
             }
 
             // Mostrar datos en el DataGridView
@@ -122,19 +143,33 @@ namespace grupo1___github
             textBox4.Clear();
 
         }
-        private void button2_Click(object sender, EventArgs e)
+
+        private void button4_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView1.Rows.Count < 2)
             {
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                MessageBox.Show("Debe haber al menos 2 datos en el DataGridView para ordenar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Ordenar de menor a mayor basado en la columna TextBox1
+            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Botón para ordenar de manera descendente
+           
+                if (dataGridView1.Rows.Count < 2)
                 {
-                    dataGridView1.Rows.Remove(row);
+                    MessageBox.Show("Debe haber al menos 2 datos en el DataGridView para ordenar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-            }
-            else
-            {
-                MessageBox.Show("Selecciona una fila para borrar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+
+                // Ordenar el DataGridView en orden descendente basado en la columna TextBox1
+                dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Descending);
+            
         }
     }
 }

@@ -70,7 +70,7 @@ namespace grupo1___github
         private void button3_Click(object sender, EventArgs e)
         {
             // Crear una instancia del formulario "Pila"
-            Form2 pilaForm = new Form2();
+            Bubblesort pilaForm = new Bubblesort();
 
             // Mostrar el formulario
             pilaForm.Show();
