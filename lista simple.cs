@@ -55,8 +55,7 @@ namespace grupo1___github
         }
 
         private void InitializeDataGridView()
-        {
-            
+        {           
             dataGridView1.ColumnCount = 6;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Propietario";
@@ -72,7 +71,6 @@ namespace grupo1___github
                 e.Handled = true;
             }
         }
-
         private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
@@ -80,8 +78,7 @@ namespace grupo1___github
                 e.Handled = true;
             }
         }
-
-        
+      
         private void AgregarNodo(int id, string propietario, string producto, int cantidad, decimal costo, DateTime fechaEntrega)
         {
             Nodo nuevo = new Nodo(id, propietario, producto, cantidad, costo, fechaEntrega);
@@ -101,7 +98,6 @@ namespace grupo1___github
 
             MostrarLista(); 
         }
-
        
         private void MostrarLista()
         {
@@ -120,9 +116,7 @@ namespace grupo1___github
                 );
                 actual = actual.Siguiente;
             }
-        }
-
-   
+        } 
         private Nodo BuscarNodo(int id)
         {
             Nodo actual = primero;
@@ -137,8 +131,7 @@ namespace grupo1___github
 
             return null;
         }
-
-    
+   
         private void EliminarNodo(int id)
         {
             if (primero == null)
@@ -185,7 +178,7 @@ namespace grupo1___github
                 textBox4.Clear();
                 textBox7.Clear();
 
-                MessageBox.Show("Nodo agregado exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El Nodo a sido agregado exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
