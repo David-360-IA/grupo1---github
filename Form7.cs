@@ -126,5 +126,10 @@ namespace grupo1___github
 
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Descending);
         }
+
+        private void Form7_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

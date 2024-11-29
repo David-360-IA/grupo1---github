@@ -9,8 +9,6 @@ namespace grupo1___github
         public cola_lineal()
         {
             InitializeComponent();
-
-            // Asignar eventos KeyPress a los TextBox para restringir entradas
             textBox1.KeyPress += SoloNumeros_KeyPress;
             textBox4.KeyPress += SoloNumeros_KeyPress;
             textBox7.KeyPress += SoloNumeros_KeyPress;
@@ -25,25 +23,23 @@ namespace grupo1___github
 
         private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permitir solo dígitos y el control de retroceso
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true; // Cancela el evento para caracteres no válidos
+                e.Handled = true; 
             }
         }
 
         private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permitir solo letras y el control de retroceso
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
-                e.Handled = true; // Cancela el evento para caracteres no válidos
+                e.Handled = true; 
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Comprobar si algún TextBox está vacío
+           
             if (string.IsNullOrWhiteSpace(textBox1.Text) ||
                 string.IsNullOrWhiteSpace(textBox2.Text) ||
                 string.IsNullOrWhiteSpace(textBox3.Text) ||
@@ -55,20 +51,16 @@ namespace grupo1___github
                 string.IsNullOrWhiteSpace(textBox8.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos antes de agregar.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Detener la ejecución si hay campos vacíos
+                return;
             }
 
-            // Verificar si el contenido de textBox9 es un número válido
             if (int.TryParse(textBox9.Text, out int maxRows))
             {
-                // Comprobar si el DataGridView ya tiene el número máximo de filas permitidas
                 if (dataGridView1.Rows.Count >= maxRows)
                 {
                     MessageBox.Show("No se pueden agregar más elementos. Se ha alcanzado el límite de la cola.", "Límite de cola alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                // Obtener los valores de los TextBox y DateTimePicker
                 string value1 = textBox1.Text;
                 string value2 = textBox2.Text;
                 string value3 = textBox3.Text;
@@ -80,8 +72,6 @@ namespace grupo1___github
                 string value9 = textBox7.Text;
                 string value10 = textBox8.Text;
                 string value11 = dateTimePicker1.Value.ToString("yyyy-MM-dd");
-
-                // Insertar una nueva fila al final del DataGridView (final de la cola)
                 dataGridView1.Rows.Add(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11);
             }
             else
@@ -92,15 +82,12 @@ namespace grupo1___github
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Verificar si hay al menos una fila en el DataGridView
             if (dataGridView1.Rows.Count > 0)
             {
-                // Eliminar la primera fila (frente de la cola)
                 dataGridView1.Rows.RemoveAt(0);
             }
             else
             {
-                // Mensaje de advertencia si no hay filas para eliminar
                 MessageBox.Show("No hay elementos en la cola para eliminar.", "Cola vacía", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -114,15 +101,15 @@ namespace grupo1___github
 
         private void cola_lineal_Load_1(object sender, EventArgs e)
         {
-            // Configura el DataGridView como no editable
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
+            dateTimePicker1.MinDate = DateTime.Today;        
+            dateTimePicker2.Enabled = false; 
+        }
 
-            // Establecer la fecha mínima de dateTimePicker1 a la fecha actual
-            dateTimePicker1.MinDate = DateTime.Today;
+        private void label13_Click(object sender, EventArgs e)
+        {
 
-            // Deshabilitar dateTimePicker2 para que no se pueda seleccionar ninguna fecha
-            dateTimePicker2.Enabled = false; // O puedes ocultarlo usando dateTimePicker2.Visible = false
         }
     }
 }

@@ -6,16 +6,13 @@ namespace grupo1___github
 {
     public partial class cola_circular : Form
     {
-        // Definimos la cola circular
         private ColaCircular cola;
         private int maxFilas;
 
         public cola_circular()
         {
             InitializeComponent();
-            cola = new ColaCircular(10); // Tamaño de la cola circular
-
-            // Asignar eventos KeyPress a los TextBox para restringir entradas
+            cola = new ColaCircular(10); 
             textBox1.KeyPress += SoloNumeros_KeyPress;
             textBox4.KeyPress += SoloNumeros_KeyPress;
             textBox7.KeyPress += SoloNumeros_KeyPress;
@@ -33,7 +30,7 @@ namespace grupo1___github
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true; // Cancela el evento para caracteres no válidos
+                e.Handled = true; 
             }
         }
 
@@ -41,30 +38,24 @@ namespace grupo1___github
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
-                e.Handled = true; // Cancela el evento para caracteres no válidos
+                e.Handled = true;
             }
         }
 
         private void cola_circular_Load(object sender, EventArgs e)
         {
-            // Configura el DataGridView como no editable
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
-
-            // Establecer la fecha mínima de dateTimePicker1 a la fecha actual
             dateTimePicker1.MinDate = DateTime.Today;
-
-            // Deshabilitar dateTimePicker2 para que no se pueda seleccionar ninguna fecha
-            dateTimePicker2.Enabled = false; // O puedes ocultarlo usando dateTimePicker2.Visible = false
+            dateTimePicker2.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Verificar si la cola tiene elementos
             if (!cola.IsEmpty())
             {
-                cola.Dequeue(); // Eliminar el primer elemento (frente de la cola)
-                MostrarCola(); // Actualizar el DataGridView
+                cola.Dequeue();
+                MostrarCola(); 
             }
             else
             {
@@ -172,10 +163,10 @@ namespace grupo1___github
             public void Enqueue(string[] elemento)
             {
                 if (IsFull())
-                    return; // No se puede agregar si está llena
+                    return; 
 
                 if (IsEmpty())
-                    frente = 0; // Primer elemento añadido
+                    frente = 0; 
 
                 atras = (atras + 1) % capacidad;
                 elementos[atras] = elemento;
@@ -184,9 +175,9 @@ namespace grupo1___github
             public void Dequeue()
             {
                 if (IsEmpty())
-                    return; // No se puede eliminar si está vacía
+                    return; 
 
-                if (frente == atras) // La cola queda vacía
+                if (frente == atras) 
                 {
                     frente = -1;
                     atras = -1;
@@ -201,7 +192,6 @@ namespace grupo1___github
             {
                 get
                 {
-                    // Devolver los elementos en el orden correcto para mostrar en el DataGridView
                     string[][] resultado = new string[Count][];
                     int j = 0;
                     for (int i = frente; j < Count; i = (i + 1) % capacidad)

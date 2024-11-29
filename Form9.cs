@@ -176,7 +176,7 @@ namespace grupo1___github
         private void DibujarArbol(Nodo raiz, Panel panel)
         {
             Graphics g = panel.CreateGraphics();
-            g.Clear(Color.White); // Limpiar el panel
+            g.Clear(Color.White); 
 
             if (raiz != null)
             {
@@ -216,6 +216,11 @@ namespace grupo1___github
         }
 
         private void Form9_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

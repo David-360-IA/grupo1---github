@@ -87,6 +87,7 @@ namespace grupo1___github
        
             public void Dibujar(Graphics g, Nodo nodo, int x, int y, int offset)
             {
+                
                 if (nodo == null) return;
 
               
@@ -106,10 +107,6 @@ namespace grupo1___github
                 }
             }
         }
-
-
-
-
         private void Form8_Load(object sender, EventArgs e)
         {
 
@@ -157,7 +154,7 @@ namespace grupo1___github
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            panel1.BackColor = Color.White;
             panel1.Invalidate();
             arbol = new ArbolBinario();
 
@@ -187,6 +184,7 @@ namespace grupo1___github
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             arbol.Dibujar(e.Graphics, arbol.Raiz, panel1.Width / 2, 20, 40);
+          
         }
     }
 }

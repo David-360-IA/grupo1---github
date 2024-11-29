@@ -24,7 +24,6 @@ namespace grupo1___github
             textBox2.KeyPress += SoloLetras_KeyPress;
             textBox3.KeyPress += SoloLetras_KeyPress;
         }
-        // Configurar el DataGridView
         private void InitializeDataGridView()
         {
             // Configuración de columnas en el DataGridView
@@ -37,7 +36,6 @@ namespace grupo1___github
             dataGridView1.Columns[5].Name = "Fecha";
         }
 
-        // Mostrar datos en el DataGridView
         private void MostrarDatos()
         {
             string[] row = new string[]
@@ -81,15 +79,13 @@ namespace grupo1___github
                 MessageBox.Show("Debe haber al menos 2 datos en el DataGridView para ordenar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Ordenar de menor a mayor basado en la columna TextBox1
+        
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
         }
 
         
         private void button1_Click(object sender, EventArgs e)
         {
-            // Validar que todos los campos estén llenos
             if (string.IsNullOrWhiteSpace(textBox1.Text) ||
                 string.IsNullOrWhiteSpace(textBox2.Text) ||
                 string.IsNullOrWhiteSpace(textBox3.Text) ||
@@ -100,7 +96,6 @@ namespace grupo1___github
                 return;
             }
 
-            // Validar que no haya datos similares en el TextBox1
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == textBox1.Text)
@@ -111,10 +106,8 @@ namespace grupo1___github
 
             }
 
-            // Mostrar datos en el DataGridView
             MostrarDatos();
 
-            // Limpiar los TextBoxs después de guardar
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();

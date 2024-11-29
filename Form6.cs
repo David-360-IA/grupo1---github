@@ -16,8 +16,6 @@ namespace grupo1___github
         {
             InitializeComponent();
             InitializeDataGridView();
-
-            // Asignar eventos para validaciones
             textBox1.KeyPress += SoloNumeros_KeyPress;
             textBox4.KeyPress += SoloNumeros_KeyPress;
             textBox7.KeyPress += SoloNumeros_KeyPress;
@@ -25,10 +23,8 @@ namespace grupo1___github
             textBox2.KeyPress += SoloLetras_KeyPress;
             textBox3.KeyPress += SoloLetras_KeyPress;
         }
-        // Configurar el DataGridView
         private void InitializeDataGridView()
         {
-            // Configuración de columnas en el DataGridView
             dataGridView1.ColumnCount = 6;
             dataGridView1.Columns[0].Name = "TextBox1";
             dataGridView1.Columns[1].Name = "TextBox2";
@@ -37,8 +33,6 @@ namespace grupo1___github
             dataGridView1.Columns[4].Name = "TextBox4";
             dataGridView1.Columns[5].Name = "Fecha";
         }
-
-        // Mostrar datos en el DataGridView
         private void MostrarDatos()
         {
             string[] row = new string[]
@@ -76,7 +70,6 @@ namespace grupo1___github
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Validar que todos los campos estén llenos
             if (string.IsNullOrWhiteSpace(textBox1.Text) ||
                 string.IsNullOrWhiteSpace(textBox2.Text) ||
                 string.IsNullOrWhiteSpace(textBox3.Text) ||
@@ -86,8 +79,6 @@ namespace grupo1___github
                 MessageBox.Show("Por favor, llena todos los campos antes de guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Validar que no haya datos similares en el TextBox1
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == textBox1.Text)
@@ -96,11 +87,7 @@ namespace grupo1___github
                     return;
                 }
             }
-
-            // Mostrar datos en el DataGridView
             MostrarDatos();
-
-            // Limpiar los TextBoxs después de guardar
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
@@ -130,14 +117,11 @@ namespace grupo1___github
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // Verificar si hay filas en el DataGridView
             if (dataGridView1.Rows.Count < 1)
             {
                 MessageBox.Show("Debe haber al menos 1 fila en el DataGridView para ordenar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Ordenar por la columna del ID (columna 0)
             try
             {
                 dataGridView1.Sort(new NumericComparer(0));
@@ -147,8 +131,6 @@ namespace grupo1___github
                 MessageBox.Show($"Error al ordenar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // Comparador personalizado para ordenar numéricamente la columna de ID
         public class NumericComparer : System.Collections.IComparer
         {
             private readonly int columnIndex;
@@ -163,21 +145,15 @@ namespace grupo1___github
                 DataGridViewRow row1 = x as DataGridViewRow;
                 DataGridViewRow row2 = y as DataGridViewRow;
 
-                // Verificar si las filas son válidas
                 if (row1 == null || row2 == null)
                     return 0;
 
-                // Obtener los valores de la columna especificada
                 string value1 = row1.Cells[columnIndex].Value?.ToString() ?? "0";
                 string value2 = row2.Cells[columnIndex].Value?.ToString() ?? "0";
-
-                // Convertir los valores a números
                 if (int.TryParse(value1, out int num1) && int.TryParse(value2, out int num2))
                 {
                     return num1.CompareTo(num2);
                 }
-
-                // Si no son numéricos, tratarlos como texto (en casos atípicos)
                 return string.Compare(value1, value2, StringComparison.Ordinal);
             }
         }
