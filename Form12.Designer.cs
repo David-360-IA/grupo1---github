@@ -199,7 +199,7 @@
             // 
             this.button4.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(186, 96);
+            this.button4.Location = new System.Drawing.Point(186, 97);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(83, 26);
